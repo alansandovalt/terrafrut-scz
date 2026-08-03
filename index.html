@@ -3,38 +3,47 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Terrafrut — Jugos 100% naturales en Santa Cruz de la Sierra, Bolivia. Agua de coco, maracuyá, copoazú. Sin conservantes. Todo Puro.">
-    <meta name="keywords" content="jugos naturales Bolivia, agua de coco Santa Cruz, maracuyá, copoazú, Terrafrut">
+    <meta name="description" content="Jugos de coco, maracuyá, copoazú y bebidas tropicales bien frías en Santa Cruz. Encontrá tu Terrafrut o pedí por WhatsApp.">
+    <meta name="keywords" content="jugos Santa Cruz, agua de coco Bolivia, maracuyá, copoazú, bebidas frías Santa Cruz, Terrafrut">
     <meta name="author" content="Terrafrut">
     <meta property="og:type" content="website">
-    <meta property="og:title" content="Terrafrut — Todo Puro.">
-    <meta property="og:description" content="Jugos 100% naturales. Santa Cruz de la Sierra, Bolivia.">
+    <meta property="og:site_name" content="Terrafrut">
+    <meta property="og:title" content="Terrafrut | Jugos tropicales y coco en Santa Cruz">
+    <meta property="og:description" content="Jugos de coco, maracuyá, copoazú y bebidas tropicales bien frías en Santa Cruz. Encontrá tu Terrafrut o pedí por WhatsApp.">
     <meta property="og:image" content="img/hero.webp">
-    <meta name="theme-color" content="#F9F9F6">
-    <title>Terrafrut — Todo Puro. | Jugos 100% naturales · Santa Cruz, Bolivia</title>
+    <meta property="og:locale" content="es_BO">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="theme-color" content="#F4F1E8">
+    <title>Terrafrut | Jugos tropicales y coco en Santa Cruz</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Xanh+Mono:ital@0;1&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Xanh+Mono:ital@0;1&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-    <!-- ============================ HEADER ============================ -->
+    <a href="#inicio" class="skip-link">Saltar al contenido</a>
+
+    <!-- ============================ 1. HEADER ============================ -->
     <header class="header" id="header">
         <nav class="nav" aria-label="Navegación principal">
             <a href="#inicio" class="nav__logo">Terrafrut</a>
 
             <ul class="nav__menu" id="navMenu">
-                <li><a href="#inicio"    class="nav__link">Inicio</a></li>
                 <li><a href="#productos" class="nav__link">Productos</a></li>
+                <li><a href="#nosotros"  class="nav__link">Nosotros</a></li>
                 <li><a href="#tiendas"   class="nav__link">Tiendas</a></li>
                 <li><a href="#contacto"  class="nav__link">Contacto</a></li>
+                <li class="nav__menu-cta">
+                    <a href="https://wa.me/59165864554?text=Hola%2C%20Terrafrut.%20Quiero%20pedir%20algo%20bien%20fr%C3%ADo."
+                       target="_blank" rel="noopener noreferrer" class="btn btn--solid btn--sm btn--block">Pedir por WhatsApp</a>
+                </li>
             </ul>
 
             <div class="nav__action">
-                <a href="https://wa.me/59165864554?text=%C2%A1Hola%20Terrafrut!%20Quiero%20hacer%20un%20pedido."
-                   target="_blank" rel="noopener noreferrer" class="nav__talk">Hablemos&nbsp;&nbsp;|</a>
+                <a href="https://wa.me/59165864554?text=Hola%2C%20Terrafrut.%20Quiero%20pedir%20algo%20bien%20fr%C3%ADo."
+                   target="_blank" rel="noopener noreferrer" class="btn btn--solid btn--sm nav__cta">Pedir por WhatsApp</a>
                 <button class="nav__burger" id="navBurger" aria-label="Abrir menú" aria-expanded="false" aria-controls="navMenu">
                     <span></span><span></span>
                 </button>
@@ -44,287 +53,454 @@
 
     <main>
 
-        <!-- ============================ HERO ============================ -->
-        <section class="hero" id="inicio" aria-label="Terrafrut — Todo Puro">
-            <img class="hero__bg" src="img/hero.webp" alt="" aria-hidden="true">
+        <!-- ============================ 2. HERO ============================ -->
+        <section class="hero" id="inicio">
+            <img class="hero__bg" src="img/hero.webp" alt="" aria-hidden="true" width="1920" height="1134" fetchpriority="high">
             <div class="hero__scrim" aria-hidden="true"></div>
 
             <div class="hero__content">
-                <p class="hero__breadcrumb reveal">Santa Cruz de la Sierra · Bolivia</p>
-                <h1 class="hero__title reveal">Todo Puro</h1>
-                <p class="hero__subtitle reveal"><strong>100% Natural</strong> · Jugos de temporada · Derivados del coco</p>
+                <p class="hero__eyebrow reveal">Hecho aquí nomás · Santa Cruz</p>
+                <h1 class="hero__title reveal">
+                    No podemos bajar el calor.<br>
+                    <span class="hero__title-accent">El jugo sí.</span>
+                </h1>
+                <p class="hero__subtitle reveal">
+                    Coco, maracuyá y copoazú bien fríos.<br>
+                    Todo puro. Cero macanas.
+                </p>
                 <div class="hero__actions reveal">
-                    <a href="#sobre-nosotros" class="btn btn--light">Discover</a>
-                    <a href="#productos" class="btn btn--light">Ver productos</a>
+                    <a href="https://wa.me/59165864554?text=Hola%2C%20Terrafrut.%20Quiero%20pedir%20algo%20bien%20fr%C3%ADo."
+                       target="_blank" rel="noopener noreferrer" class="btn btn--solid">Pedir por WhatsApp</a>
+                    <a href="#productos" class="btn btn--ghost-light">Ver qué hay</a>
                 </div>
             </div>
-
-            <a href="#sobre-nosotros" class="hero__scroll" aria-label="Bajar a la siguiente sección">Scroll&nbsp;&nbsp;|</a>
         </section>
 
-        <!-- ======================= SOBRE NOSOTROS ======================= -->
-        <section class="about" id="sobre-nosotros" aria-labelledby="about-title">
+        <!-- ======================= 3. FRANJA ANIMADA ======================= -->
+        <div class="marquee" aria-hidden="true">
+            <div class="marquee__track" id="marqueeTrack">
+                <span class="marquee__group">
+                    <span>Fruta de verdad</span><i>·</i>
+                    <span>Bien frío</span><i>·</i>
+                    <span>Hecho aquí nomás</span><i>·</i>
+                    <span>Cero macanas</span><i>·</i>
+                    <span>Desde 2020</span><i>·</i>
+                </span>
+                <span class="marquee__group">
+                    <span>Fruta de verdad</span><i>·</i>
+                    <span>Bien frío</span><i>·</i>
+                    <span>Hecho aquí nomás</span><i>·</i>
+                    <span>Cero macanas</span><i>·</i>
+                    <span>Desde 2020</span><i>·</i>
+                </span>
+            </div>
+        </div>
+
+        <!-- ========================== 4. NOSOTROS ========================== -->
+        <section class="about" id="nosotros" aria-labelledby="about-title">
             <figure class="about__media">
-                <img src="img/sobre-nosotros.webp" alt="Palmeras frente al mar, fruta tropical de origen" loading="lazy">
-                <span class="about__since">Desde 2020</span>
+                <img src="img/sobre-nosotros.webp"
+                     alt="Persona tomando una bebida Terrafrut fría en la calle"
+                     loading="lazy" width="1842" height="2015">
             </figure>
 
             <div class="about__body">
-                <p class="eyebrow reveal">Terrafrut® · Sobre nosotros</p>
-                <h2 class="about__title reveal" id="about-title">Desde la tierra<br><em>a tu vaso.</em></h2>
-                <p class="about__text reveal">
-                    <strong>Terrafrut</strong> nació para llevar el sabor auténtico de Bolivia a cada persona.
-                    Trabajamos solo con productos <strong>100% naturales</strong>, sin aditivos ni conservantes.
-                    Cada jugo es un pedazo de la tierra cruceña, hecho con cariño y compromiso
-                    con la calidad.
-                </p>
+                <p class="eyebrow reveal">Desde 2020 · Santa Cruz</p>
+                <h2 class="about__title reveal" id="about-title">
+                    Nos tomamos la fruta en serio.<br>
+                    <em>Vos tomátela fría.</em>
+                </h2>
 
-                <ul class="about__benefits">
-                    <li class="benefit reveal">
-                        <span class="benefit__icon" aria-hidden="true">
-                            <svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
-                                <circle cx="20" cy="20" r="15" fill="#7f5130"/>
-                                <path d="M20 5a15 15 0 0 1 0 30z" fill="#6a4123"/>
-                                <g fill="#2e1b0e">
-                                    <ellipse cx="15" cy="17" rx="1.9" ry="2.3"/>
-                                    <ellipse cx="25" cy="17" rx="1.9" ry="2.3"/>
-                                    <ellipse cx="20" cy="26" rx="1.9" ry="2.3"/>
-                                </g>
-                                <g stroke="#d9a86a" stroke-width="0.9" opacity="0.35" fill="none" stroke-linecap="round">
-                                    <path d="M9 14c4 2 18 2 22 0"/>
-                                    <path d="M8 20c5 2 19 2 24 0"/>
-                                    <path d="M9 26c4 2 18 2 22 0"/>
-                                </g>
-                            </svg>
-                        </span>
-                        <div class="benefit__copy">
-                            <h3>100% Natural</h3>
-                            <p>Frutas frescas, directo del campo.</p>
-                        </div>
+                <div class="about__text reveal">
+                    <p>
+                        Terrafrut nació en Santa Cruz en 2020 con una idea simple: hacer bebidas
+                        tropicales que sepan a lo que dicen que saben.
+                    </p>
+                    <p>
+                        Coco que sabe a coco. Maracuyá que tiene carácter. Copoazú para los que
+                        saben. Ingredientes simples, producción local y nada que esté de más.
+                    </p>
+                </div>
+
+                <ul class="about__blocks">
+                    <li class="block reveal">
+                        <h3 class="block__title">Fruta que se nota</h3>
+                        <p class="block__text">Sabores claros, tropicales y sin vueltas.</p>
                     </li>
-                    <li class="benefit reveal">
-                        <span class="benefit__icon" aria-hidden="true">
-                            <svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
-                                <circle cx="20" cy="20" r="15" fill="#7f5130"/>
-                                <path d="M20 5a15 15 0 0 1 0 30z" fill="#6a4123"/>
-                                <g fill="#2e1b0e">
-                                    <ellipse cx="15" cy="17" rx="1.9" ry="2.3"/>
-                                    <ellipse cx="25" cy="17" rx="1.9" ry="2.3"/>
-                                    <ellipse cx="20" cy="26" rx="1.9" ry="2.3"/>
-                                </g>
-                                <g stroke="#d9a86a" stroke-width="0.9" opacity="0.35" fill="none" stroke-linecap="round">
-                                    <path d="M9 14c4 2 18 2 22 0"/>
-                                    <path d="M8 20c5 2 19 2 24 0"/>
-                                    <path d="M9 26c4 2 18 2 22 0"/>
-                                </g>
-                            </svg>
-                        </span>
-                        <div class="benefit__copy">
-                            <h3>Sin aditivos</h3>
-                            <p>Sin conservantes ni colorantes.</p>
-                        </div>
+                    <li class="block reveal">
+                        <h3 class="block__title">Cero macanas</h3>
+                        <p class="block__text">Sin conservantes ni colorantes.</p>
                     </li>
-                    <li class="benefit reveal">
-                        <span class="benefit__icon" aria-hidden="true">
-                            <svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
-                                <circle cx="20" cy="20" r="15" fill="#7f5130"/>
-                                <path d="M20 5a15 15 0 0 1 0 30z" fill="#6a4123"/>
-                                <g fill="#2e1b0e">
-                                    <ellipse cx="15" cy="17" rx="1.9" ry="2.3"/>
-                                    <ellipse cx="25" cy="17" rx="1.9" ry="2.3"/>
-                                    <ellipse cx="20" cy="26" rx="1.9" ry="2.3"/>
-                                </g>
-                                <g stroke="#d9a86a" stroke-width="0.9" opacity="0.35" fill="none" stroke-linecap="round">
-                                    <path d="M9 14c4 2 18 2 22 0"/>
-                                    <path d="M8 20c5 2 19 2 24 0"/>
-                                    <path d="M9 26c4 2 18 2 22 0"/>
-                                </g>
-                            </svg>
-                        </span>
-                        <div class="benefit__copy">
-                            <h3>Sostenible</h3>
-                            <p>Productores locales de Santa Cruz.</p>
-                        </div>
+                    <li class="block reveal">
+                        <h3 class="block__title">Hecho aquí nomás</h3>
+                        <p class="block__text">Producido en Santa Cruz desde 2020.</p>
                     </li>
                 </ul>
-
-                <a href="https://wa.me/59165864554?text=%C2%A1Hola%20Terrafrut!%20Quiero%20m%C3%A1s%20informaci%C3%B3n."
-                   target="_blank" rel="noopener noreferrer" class="btn btn--dark reveal">Hablemos</a>
             </div>
         </section>
 
-        <!-- ========================= PRODUCTOS ========================= -->
+        <!-- ========================= 5. PRODUCTOS ========================= -->
         <section class="products" id="productos" aria-labelledby="products-title">
             <div class="products__header">
-                <h2 class="section-title reveal" id="products-title">Nuestros productos</h2>
-                <p class="products__note reveal">
-                    Precios en bolivianos. Pedidos directos por WhatsApp,
-                    entrega o recojo en nuestras tiendas.
-                </p>
+                <div>
+                    <p class="eyebrow reveal">Nuestros sabores</p>
+                    <h2 class="section-title reveal" id="products-title">¿Qué vas a tomar?</h2>
+                </div>
+                <p class="products__note reveal">Elegí tu fruta. Nosotros la ponemos fría.</p>
             </div>
 
-            <div class="products__grid products__grid--3">
-                <article class="card reveal">
-                    <img class="card__img" src="img/agua-de-coco.webp" alt="Agua de Coco — fruta tropical fresca" loading="lazy">
-                    <span class="card__tag">SS2026</span>
-                    <div class="card__info">
-                        <h3 class="card__title">Agua de Coco</h3>
-                        <p class="card__price">800 ml · 20 Bs&nbsp;&nbsp;·&nbsp;&nbsp;2 litros · 50 Bs</p>
-                        <a href="https://wa.me/59165864554?text=%C2%A1Hola%20Terrafrut!%20Quiero%20pedir%20Agua%20de%20Coco."
-                           target="_blank" rel="noopener noreferrer" class="btn btn--light btn--sm">Shop Now</a>
+            <ul class="products__grid">
+                <li class="card reveal">
+                    <div class="card__media">
+                        <img class="card__img" src="img/agua-de-coco.webp" alt="Agua de coco Terrafrut"
+                             loading="lazy" width="1920" height="2880">
                     </div>
-                </article>
+                    <div class="card__info">
+                        <p class="card__tag">La que te salva</p>
+                        <h3 class="card__title">Agua de coco</h3>
+                        <p class="card__desc">Ligera, refrescante y lista para este calor.</p>
+                        <p class="card__price"><b>800 ml · 20 Bs</b><span>2 litros · 50 Bs</span></p>
+                        <a href="https://wa.me/59165864554?text=Hola%2C%20Terrafrut.%20Quiero%20pedir%20agua%20de%20coco.%20%C2%BFTienen%20disponible%3F"
+                           target="_blank" rel="noopener noreferrer" class="btn btn--solid btn--sm btn--block">Quiero esta</a>
+                    </div>
+                </li>
 
-                <article class="card reveal">
-                    <img class="card__img" src="img/jugo-de-coco.webp" alt="Jugo de Coco — jugos naturales" loading="lazy">
-                    <span class="card__tag">SS2026</span>
-                    <div class="card__info">
-                        <h3 class="card__title">Jugo de Coco</h3>
-                        <p class="card__price">800 ml · 10 Bs&nbsp;&nbsp;·&nbsp;&nbsp;2 litros · 25 Bs</p>
-                        <a href="https://wa.me/59165864554?text=%C2%A1Hola%20Terrafrut!%20Quiero%20pedir%20Jugo%20de%20Coco."
-                           target="_blank" rel="noopener noreferrer" class="btn btn--light btn--sm">Shop Now</a>
+                <li class="card reveal">
+                    <div class="card__media">
+                        <img class="card__img" src="img/jugo-de-coco.webp" alt="Jugo de coco Terrafrut"
+                             loading="lazy" width="1920" height="1278">
                     </div>
-                </article>
+                    <div class="card__info">
+                        <p class="card__tag">Suave pero serio</p>
+                        <h3 class="card__title">Jugo de coco</h3>
+                        <p class="card__desc">Cremoso, tropical y bien frío. Como corresponde.</p>
+                        <p class="card__price"><b>800 ml · 10 Bs</b><span>2 litros · 25 Bs</span></p>
+                        <a href="https://wa.me/59165864554?text=Hola%2C%20Terrafrut.%20Quiero%20pedir%20jugo%20de%20coco.%20%C2%BFTienen%20disponible%3F"
+                           target="_blank" rel="noopener noreferrer" class="btn btn--solid btn--sm btn--block">Pedir coco</a>
+                    </div>
+                </li>
 
-                <article class="card reveal">
-                    <img class="card__img" src="img/jugo-de-maracuya.webp" alt="Jugo de Maracuyá — maracuyá fresco partido" loading="lazy">
-                    <span class="card__tag">SS2026</span>
-                    <div class="card__info">
-                        <h3 class="card__title">Jugo de Maracuyá</h3>
-                        <p class="card__price">800 ml · 10 Bs&nbsp;&nbsp;·&nbsp;&nbsp;2 litros · 25 Bs</p>
-                        <a href="https://wa.me/59165864554?text=%C2%A1Hola%20Terrafrut!%20Quiero%20pedir%20Jugo%20de%20Maracuy%C3%A1."
-                           target="_blank" rel="noopener noreferrer" class="btn btn--light btn--sm">Shop Now</a>
+                <li class="card reveal">
+                    <div class="card__media">
+                        <img class="card__img" src="img/jugo-de-maracuya.webp" alt="Jugo de maracuyá Terrafrut"
+                             loading="lazy" width="1920" height="1089">
                     </div>
-                </article>
+                    <div class="card__info">
+                        <p class="card__tag">Tiene carácter</p>
+                        <h3 class="card__title">Jugo de maracuyá</h3>
+                        <p class="card__desc">Ácido, intenso y nada tímido.</p>
+                        <p class="card__price"><b>800 ml · 10 Bs</b><span>2 litros · 25 Bs</span></p>
+                        <a href="https://wa.me/59165864554?text=Hola%2C%20Terrafrut.%20Quiero%20pedir%20jugo%20de%20maracuy%C3%A1.%20%C2%BFTienen%20disponible%3F"
+                           target="_blank" rel="noopener noreferrer" class="btn btn--solid btn--sm btn--block">Quiero maracuyá</a>
+                    </div>
+                </li>
+
+                <li class="card reveal">
+                    <div class="card__media">
+                        <img class="card__img" src="img/jugo-de-copoazu.webp" alt="Jugo de copoazú Terrafrut"
+                             loading="lazy" width="1696" height="2005">
+                    </div>
+                    <div class="card__info">
+                        <p class="card__tag">El que sabe, sabe</p>
+                        <h3 class="card__title">Jugo de copoazú</h3>
+                        <p class="card__desc">Cremoso, amazónico y difícil de olvidar.</p>
+                        <p class="card__price"><b>800 ml · 10 Bs</b><span>2 litros · 25 Bs</span></p>
+                        <a href="https://wa.me/59165864554?text=Hola%2C%20Terrafrut.%20Quiero%20pedir%20jugo%20de%20copoaz%C3%BA.%20%C2%BFTienen%20disponible%3F"
+                           target="_blank" rel="noopener noreferrer" class="btn btn--solid btn--sm btn--block">Probar copoazú</a>
+                    </div>
+                </li>
+
+                <li class="card reveal">
+                    <div class="card__media">
+                        <img class="card__img" src="img/fruto-de-coco.webp" alt="Coco fresco Terrafrut"
+                             loading="lazy" width="1792" height="2101">
+                    </div>
+                    <div class="card__info">
+                        <p class="card__tag">Sin mucha vuelta</p>
+                        <h3 class="card__title">Coco fresco</h3>
+                        <p class="card__desc">Se abre. Se toma. Se disfruta.</p>
+                        <p class="card__price"><b>Unidad · 8 Bs</b></p>
+                        <a href="https://wa.me/59165864554?text=Hola%2C%20Terrafrut.%20Quiero%20pedir%20un%20coco%20fresco.%20%C2%BFTienen%20disponible%3F"
+                           target="_blank" rel="noopener noreferrer" class="btn btn--solid btn--sm btn--block">Quiero uno</a>
+                    </div>
+                </li>
+            </ul>
+        </section>
+
+        <!-- ====================== 6. PRUEBA DEL PRODUCTO ====================== -->
+        <section class="proof" aria-labelledby="proof-title">
+            <div class="proof__head">
+                <p class="eyebrow eyebrow--light reveal">Lo que hay adentro</p>
+                <h2 class="proof__title reveal" id="proof-title">
+                    Menos cuento.<br><em>Más fruta.</em>
+                </h2>
+                <p class="proof__intro reveal">Lo natural no necesita tanto discurso.</p>
             </div>
 
-            <div class="products__grid products__grid--2">
-                <article class="card card--wide reveal">
-                    <img class="card__img" src="img/jugo-de-copoazu.webp" alt="Jugo de Copoazú — smoothie natural" loading="lazy">
-                    <span class="card__tag">SS2026</span>
-                    <div class="card__info">
-                        <h3 class="card__title">Jugo de Copoazú</h3>
-                        <p class="card__price">800 ml · 10 Bs&nbsp;&nbsp;·&nbsp;&nbsp;2 litros · 25 Bs</p>
-                        <a href="https://wa.me/59165864554?text=%C2%A1Hola%20Terrafrut!%20Quiero%20pedir%20Jugo%20de%20Copoaz%C3%BA."
-                           target="_blank" rel="noopener noreferrer" class="btn btn--light btn--sm">Shop Now</a>
-                    </div>
-                </article>
+            <ul class="proof__grid">
+                <li class="fact reveal">
+                    <h3 class="fact__title">Hecho en Santa Cruz</h3>
+                    <p class="fact__text">Producido localmente desde 2020.</p>
+                </li>
+                <li class="fact reveal">
+                    <h3 class="fact__title">Sin conservantes</h3>
+                    <p class="fact__text">Preparado sin conservantes ni colorantes.</p>
+                </li>
+                <li class="fact reveal">
+                    <h3 class="fact__title">Siempre frío</h3>
+                    <p class="fact__text">Conservado y servido frío.</p>
+                </li>
+                <li class="fact reveal">
+                    <h3 class="fact__title">Fruta de temporada</h3>
+                    <p class="fact__text">Sabores elaborados según disponibilidad y temporada.</p>
+                </li>
+            </ul>
+        </section>
 
-                <article class="card card--wide reveal">
-                    <img class="card__img" src="img/fruto-de-coco.webp" alt="Fruto de Coco — coco fresco partido" loading="lazy">
-                    <span class="card__tag">SS2026</span>
-                    <div class="card__info">
-                        <h3 class="card__title">Fruto de Coco</h3>
-                        <p class="card__price">Unidad · 8 Bs</p>
-                        <a href="https://wa.me/59165864554?text=%C2%A1Hola%20Terrafrut!%20Quiero%20pedir%20Fruto%20de%20Coco."
-                           target="_blank" rel="noopener noreferrer" class="btn btn--light btn--sm">Shop Now</a>
-                    </div>
-                </article>
+        <!-- ====================== 7. EDITORIAL DE CAMPAÑA ====================== -->
+        <section class="campaign" aria-labelledby="campaign-title">
+            <img class="campaign__bg" src="img/fruto-de-coco.webp" alt="" aria-hidden="true"
+                 loading="lazy" width="1792" height="2101">
+            <div class="campaign__scrim" aria-hidden="true"></div>
+
+            <div class="campaign__content">
+                <h2 class="campaign__title reveal" id="campaign-title">
+                    En Santa Cruz hay dos temperaturas:<br>
+                    <em>calor y Terrafrut.</em>
+                </h2>
+                <p class="campaign__text reveal">Pasá por una de nuestras tiendas o pedí por WhatsApp.</p>
+                <a href="https://wa.me/59165864554?text=Hola%2C%20Terrafrut.%20Quiero%20pedir%20algo%20bien%20fr%C3%ADo."
+                   target="_blank" rel="noopener noreferrer" class="btn btn--solid reveal">Necesito algo frío</a>
             </div>
         </section>
 
-        <!-- ========================== TIENDAS ========================== -->
+        <!-- ========================= 8. UBICACIONES ========================= -->
         <section class="stores" id="tiendas" aria-labelledby="stores-title">
             <div class="stores__intro">
                 <div>
-                    <p class="eyebrow eyebrow--light reveal">Tiendas · Santa Cruz</p>
-                    <h2 class="stores__title reveal" id="stores-title">¿Dónde encontrarnos?</h2>
+                    <p class="eyebrow eyebrow--light reveal">Dos paradas · Santa Cruz</p>
+                    <h2 class="stores__title reveal" id="stores-title">Ahí nomás tenés uno.</h2>
                 </div>
-                <p class="stores__hours reveal">
-                    <span class="stores__dot" aria-hidden="true"></span>
-                    Lunes a Domingo · 8:00 AM — 8:00 PM
+                <p class="stores__note reveal">
+                    Encontrá la Terrafrut que te quede más cerca.
+                    Abrimos todos los días de 8:00 a 20:00.
                 </p>
             </div>
 
             <div class="stores__maps">
-                <div class="map reveal">
-                    <iframe
-                        src="https://www.google.com/maps?q=Av.+Bush+3er+Anillo+Externo,+Santa+Cruz+de+la+Sierra,+Bolivia&z=15&output=embed"
-                        title="Mapa — Tienda Avenida Bush"
-                        loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade"></iframe>
+                <article class="map reveal">
+                    <div class="map__frame"
+                         data-map-src="https://www.google.com/maps?q=Av.+Bush+3er+Anillo+Externo,+Santa+Cruz+de+la+Sierra,+Bolivia&z=15&output=embed"
+                         data-map-title="Mapa — Terrafrut Bush"></div>
                     <div class="map__scrim" aria-hidden="true"></div>
                     <div class="map__info">
-                        <h3 class="map__name">Avenida Bush</h3>
+                        <h3 class="map__name">Terrafrut Bush</h3>
                         <p class="map__address">Avenida Bush, 3er anillo externo, sobre la rotonda</p>
+                        <p class="map__hours">Todos los días · 8:00 — 20:00</p>
                         <a href="https://www.google.com/maps/search/?api=1&query=Av.+Bush+3er+Anillo+Externo,+Santa+Cruz+de+la+Sierra,+Bolivia"
-                           target="_blank" rel="noopener noreferrer" class="btn btn--light btn--sm">Ver en Google Maps</a>
+                           target="_blank" rel="noopener noreferrer" class="btn btn--ghost-light btn--sm">Cómo llegar</a>
                     </div>
-                </div>
+                </article>
 
-                <div class="map reveal">
-                    <iframe
-                        src="https://www.google.com/maps?q=Av.+La+Salle+entre+4to+y+3er+anillo,+Santa+Cruz+de+la+Sierra,+Bolivia&z=15&output=embed"
-                        title="Mapa — Tienda Avenida La Salle"
-                        loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade"></iframe>
+                <article class="map reveal">
+                    <div class="map__frame"
+                         data-map-src="https://www.google.com/maps?q=Av.+La+Salle+entre+4to+y+3er+anillo,+Santa+Cruz+de+la+Sierra,+Bolivia&z=15&output=embed"
+                         data-map-title="Mapa — Terrafrut La Salle"></div>
                     <div class="map__scrim" aria-hidden="true"></div>
                     <div class="map__info">
-                        <h3 class="map__name">Avenida La Salle</h3>
+                        <h3 class="map__name">Terrafrut La Salle</h3>
                         <p class="map__address">Avenida La Salle, entre 4to y 3er anillo</p>
+                        <p class="map__hours">Todos los días · 8:00 — 20:00</p>
                         <a href="https://www.google.com/maps/search/?api=1&query=Av.+La+Salle,+Santa+Cruz+de+la+Sierra,+Bolivia"
-                           target="_blank" rel="noopener noreferrer" class="btn btn--light btn--sm">Ver en Google Maps</a>
+                           target="_blank" rel="noopener noreferrer" class="btn btn--ghost-light btn--sm">Cómo llegar</a>
                     </div>
-                </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- ======================== 9. PRUEBA SOCIAL ========================
+             Todavía no hay testimonios reales verificados. Hasta tenerlos,
+             se muestra la versión interactiva de abajo.
+
+             Estructura lista para cuando existan reseñas reales — descomentar
+             y reemplazar por opiniones verdaderas (nombre o inicial, plataforma,
+             texto real y enlace). No publicar testimonios inventados.
+
+        <section class="social" aria-labelledby="social-title">
+            <p class="eyebrow reveal">Dicen por ahí</p>
+            <h2 class="social__title reveal" id="social-title">
+                Dicen que está bueno.<br><em>Nosotros no vamos a discutir.</em>
+            </h2>
+            <ul class="social__grid">
+                <li class="quote reveal">
+                    <blockquote class="quote__text">TEXTO REAL DE LA RESEÑA</blockquote>
+                    <p class="quote__meta">
+                        <span class="quote__author">NOMBRE O INICIAL</span>
+                        <a href="ENLACE" target="_blank" rel="noopener noreferrer">PLATAFORMA</a>
+                    </p>
+                </li>
+            </ul>
+        </section>
+        -->
+
+        <section class="pick" aria-labelledby="pick-title">
+            <p class="eyebrow reveal">Dicen por ahí</p>
+            <h2 class="pick__title reveal" id="pick-title">¿Sos más de coco o maracuyá?</h2>
+            <p class="pick__note reveal">No hay respuesta incorrecta. Solo una más fría que otra.</p>
+
+            <ul class="pick__grid">
+                <li class="reveal">
+                    <a class="pick__card pick__card--coco"
+                       href="https://wa.me/59165864554?text=Hola%2C%20Terrafrut.%20Quiero%20pedir%20jugo%20de%20coco.%20%C2%BFTienen%20disponible%3F"
+                       target="_blank" rel="noopener noreferrer">
+                        <span class="pick__name">Coco</span>
+                        <span class="pick__hint">Suave pero serio</span>
+                    </a>
+                </li>
+                <li class="reveal">
+                    <a class="pick__card pick__card--maracuya"
+                       href="https://wa.me/59165864554?text=Hola%2C%20Terrafrut.%20Quiero%20pedir%20jugo%20de%20maracuy%C3%A1.%20%C2%BFTienen%20disponible%3F"
+                       target="_blank" rel="noopener noreferrer">
+                        <span class="pick__name">Maracuyá</span>
+                        <span class="pick__hint">Tiene carácter</span>
+                    </a>
+                </li>
+                <li class="reveal">
+                    <a class="pick__card pick__card--copoazu"
+                       href="https://wa.me/59165864554?text=Hola%2C%20Terrafrut.%20Quiero%20pedir%20jugo%20de%20copoaz%C3%BA.%20%C2%BFTienen%20disponible%3F"
+                       target="_blank" rel="noopener noreferrer">
+                        <span class="pick__name">Copoazú</span>
+                        <span class="pick__hint">El que sabe, sabe</span>
+                    </a>
+                </li>
+            </ul>
+        </section>
+
+        <!-- ====================== 10. CIERRE DE CONVERSIÓN ====================== -->
+        <section class="closing" aria-labelledby="closing-title">
+            <p class="eyebrow reveal">Terrafrut · Santa Cruz</p>
+            <h2 class="closing__title reveal" id="closing-title">
+                Todo puro.<br><em>Cero macanas.</em>
+            </h2>
+            <p class="closing__text reveal">Hace calor. Ya sabés qué hacer.</p>
+            <div class="closing__actions reveal">
+                <a href="https://wa.me/59165864554?text=Hola%2C%20Terrafrut.%20Quiero%20pedir%20algo%20bien%20fr%C3%ADo."
+                   target="_blank" rel="noopener noreferrer" class="btn btn--solid">Pedir por WhatsApp</a>
+                <a href="#tiendas" class="btn btn--ghost-dark">Ver tiendas</a>
             </div>
         </section>
 
     </main>
 
-    <!-- =========================== FOOTER =========================== -->
+    <!-- =========================== 11. FOOTER =========================== -->
     <footer class="footer" id="contacto">
-        <div class="footer__hero">
-            <p class="eyebrow reveal">Terrafrut® SS2026</p>
-            <p class="footer__giant" aria-hidden="true">Todo Puro.</p>
-        </div>
-
         <div class="footer__grid">
-            <nav class="footer__col" aria-label="Navegación del pie de página">
-                <h4 class="footer__heading">Navegación</h4>
+            <div class="footer__brand">
+                <p class="footer__logo">Terrafrut®</p>
+                <p class="footer__place">Santa Cruz · Desde 2020</p>
+            </div>
+
+            <nav class="footer__col" aria-label="Enlaces del pie de página">
+                <h3 class="footer__heading">Terrafrut</h3>
                 <ul>
-                    <li><a href="#inicio">Inicio</a></li>
                     <li><a href="#productos">Productos</a></li>
+                    <li><a href="#nosotros">Nosotros</a></li>
                     <li><a href="#tiendas">Tiendas</a></li>
-                    <li><a href="#sobre-nosotros">Sobre nosotros</a></li>
                 </ul>
             </nav>
 
             <div class="footer__col">
-                <h4 class="footer__heading">Contacto</h4>
+                <h3 class="footer__heading">Escribinos</h3>
                 <ul>
-                    <li><a href="tel:+59165864554">+591 65864554</a></li>
+                    <li>
+                        <a href="https://wa.me/59165864554?text=Hola%2C%20Terrafrut.%20Quiero%20pedir%20algo%20bien%20fr%C3%ADo."
+                           target="_blank" rel="noopener noreferrer">WhatsApp · +591 65864554</a>
+                    </li>
+                    <li>
+                        <a href="https://www.instagram.com/terrafrut_scz" target="_blank" rel="noopener noreferrer">Instagram · @terrafrut_scz</a>
+                    </li>
                     <li><a href="mailto:terrafrut2020@gmail.com">terrafrut2020@gmail.com</a></li>
-                    <li><a href="https://www.instagram.com/terrafrut_scz" target="_blank" rel="noopener noreferrer">@terrafrut_scz</a></li>
                 </ul>
             </div>
 
             <div class="footer__col">
-                <h4 class="footer__heading">Horarios</h4>
+                <h3 class="footer__heading">Horarios</h3>
                 <ul>
-                    <li>Lunes a Domingo · 8:00 AM — 8:00 PM</li>
-                    <li class="footer__muted">Santa Cruz de la Sierra · Bolivia</li>
+                    <li>Todos los días</li>
+                    <li>8:00 — 20:00</li>
+                    <li class="footer__muted">Av. Bush · Av. La Salle</li>
                 </ul>
-            </div>
-
-            <div class="footer__col">
-                <h4 class="footer__heading">Acción</h4>
-                <a href="https://wa.me/59165864554?text=%C2%A1Hola%20Terrafrut!%20Quiero%20hacer%20un%20pedido."
-                   target="_blank" rel="noopener noreferrer" class="btn btn--dark btn--block">Pedir ahora</a>
             </div>
         </div>
 
+        <p class="footer__sign" aria-hidden="true">Todo puro. Cero macanas.</p>
+
         <div class="footer__bottom">
             <p>© <span id="year">2026</span> Terrafrut. Todos los derechos reservados.</p>
-            <p class="footer__made">Hecho en Bolivia</p>
+            <p class="footer__made">Santa Cruz de la Sierra · Bolivia</p>
         </div>
     </footer>
 
     <!-- ====================== WHATSAPP FLOTANTE ====================== -->
-    <a href="https://wa.me/59165864554?text=%C2%A1Hola%20Terrafrut!%20Quiero%20hacer%20un%20pedido."
+    <a href="https://wa.me/59165864554?text=Hola%2C%20Terrafrut.%20Quiero%20pedir%20algo%20bien%20fr%C3%ADo."
        class="whatsapp-fab" target="_blank" rel="noopener noreferrer"
-       aria-label="Escribinos por WhatsApp">
-        <svg viewBox="0 0 24 24" width="28" height="28" fill="currentColor" aria-hidden="true">
+       aria-label="Pedir por WhatsApp">
+        <svg viewBox="0 0 24 24" width="28" height="28" fill="currentColor" aria-hidden="true" focusable="false">
             <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
         </svg>
     </a>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "FoodEstablishment",
+          "name": "Terrafrut Bush",
+          "brand": "Terrafrut",
+          "servesCuisine": "Jugos y bebidas tropicales",
+          "telephone": "+591 65864554",
+          "email": "terrafrut2020@gmail.com",
+          "image": "img/hero.webp",
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Avenida Bush, 3er anillo externo, sobre la rotonda",
+            "addressLocality": "Santa Cruz de la Sierra",
+            "addressCountry": "BO"
+          },
+          "openingHoursSpecification": {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
+            "opens": "08:00",
+            "closes": "20:00"
+          },
+          "sameAs": ["https://www.instagram.com/terrafrut_scz"]
+        },
+        {
+          "@type": "FoodEstablishment",
+          "name": "Terrafrut La Salle",
+          "brand": "Terrafrut",
+          "servesCuisine": "Jugos y bebidas tropicales",
+          "telephone": "+591 65864554",
+          "email": "terrafrut2020@gmail.com",
+          "image": "img/hero.webp",
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Avenida La Salle, entre 4to y 3er anillo",
+            "addressLocality": "Santa Cruz de la Sierra",
+            "addressCountry": "BO"
+          },
+          "openingHoursSpecification": {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
+            "opens": "08:00",
+            "closes": "20:00"
+          },
+          "sameAs": ["https://www.instagram.com/terrafrut_scz"]
+        }
+      ]
+    }
+    </script>
 
     <script src="script.js"></script>
 </body>
