@@ -34,7 +34,7 @@
     --cascara:      #7F5130;
     --whatsapp:     #25D366;
 
-    --header-h:     72px;
+    --header-h:     96px;
     --pad-x:        5vw;
     --ease:         cubic-bezier(0.22, 1, 0.36, 1);
 }
@@ -161,7 +161,7 @@ ul  { list-style: none; }
 }
 
 /* --------------------------------------------------------------------------
-   4. Header
+   4. Header — superpuesto sobre el hero
    -------------------------------------------------------------------------- */
 .header {
     --nav-ink: #fff;
@@ -170,74 +170,111 @@ ul  { list-style: none; }
     width: 100%;
     z-index: 100;
     background: transparent;
-    transition: background-color 0.4s var(--ease), box-shadow 0.4s var(--ease);
+    transition: background-color 0.4s var(--ease),
+                box-shadow 0.4s var(--ease),
+                padding 0.4s var(--ease);
+    padding: clamp(18px, 2vw, 30px) clamp(18px, 3.6vw, 56px);
 }
 
 .header.is-scrolled,
 .header.is-open {
     --nav-ink: var(--ink);
-    background: rgba(244, 241, 232, 0.92);
+    background: rgba(244, 241, 232, 0.94);
     -webkit-backdrop-filter: blur(14px) saturate(160%);
     backdrop-filter: blur(14px) saturate(160%);
 }
 
-.header.is-scrolled { box-shadow: 0 1px 20px rgba(0, 0, 0, 0.07); }
+/* Al salir del hero el header se compacta un poco */
+.header.is-scrolled {
+    padding-top: clamp(12px, 1.2vw, 18px);
+    padding-bottom: clamp(12px, 1.2vw, 18px);
+    box-shadow: 0 1px 20px rgba(0, 0, 0, 0.07);
+}
 
+/* Logo a la izquierda, navegación centrada en pantalla, WhatsApp a la derecha */
 .nav {
-    height: var(--header-h);
-    padding: 0 var(--pad-x);
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
     align-items: center;
-    gap: 2rem;
+    gap: 1.5rem;
 }
 
+/* El logo es la palabra Terrafrut: se agranda, no se rediseña */
 .nav__logo {
-    font-size: 1.55rem;
+    justify-self: start;
+    font-size: clamp(20px, 2vw, 32px);
     font-weight: 700;
+    line-height: 1.1;
     color: var(--nav-ink);
-    transition: color 0.4s var(--ease);
+    transition: color 0.4s var(--ease), font-size 0.4s var(--ease);
 }
 
-.nav__menu { display: flex; align-items: center; gap: 30px; }
+.header.is-scrolled .nav__logo { font-size: clamp(18px, 1.55vw, 24px); }
+
+.nav__menu {
+    justify-self: center;
+    display: flex;
+    align-items: center;
+    gap: clamp(28px, 2.4vw, 38px);
+}
 
 .nav__menu-cta { display: none; }
 
 .nav__link {
-    font-size: 14.5px;
+    font-family: var(--font-ui);
+    font-size: clamp(14px, 1.05vw, 16px);
     font-weight: 500;
     color: var(--nav-ink);
     padding: 6px 2px;
     position: relative;
-    transition: color 0.4s var(--ease);
+    transition: color 0.4s var(--ease), opacity 0.3s var(--ease);
 }
 
 .nav__link::after {
     content: "";
     position: absolute;
     left: 0; bottom: 0;
-    width: 100%; height: 1.5px;
+    width: 100%; height: 1px;
     background: currentColor;
     transform: scaleX(0);
     transform-origin: right;
     transition: transform 0.35s var(--ease);
 }
 
+/* Refuerzo de legibilidad mientras el header va sobre la fotografía */
+.header:not(.is-scrolled):not(.is-open) .nav__link,
+.header:not(.is-scrolled):not(.is-open) .nav__logo {
+    text-shadow: 0 1px 14px rgba(0, 0, 0, 0.55);
+}
+
+.nav__link:hover { opacity: 0.85; }
 .nav__link:hover::after { transform: scaleX(1); transform-origin: left; }
 
-.nav__action { display: flex; align-items: center; gap: 1rem; }
-
-/* Sobre el hero el botón va en blanco para no perderse contra la imagen */
-.header:not(.is-scrolled):not(.is-open) .nav__cta {
-    background: #fff;
-    border-color: #fff;
-    color: var(--ink);
+.nav__action {
+    justify-self: end;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
 }
 
-.header:not(.is-scrolled):not(.is-open) .nav__cta:hover {
-    background: var(--maracuya);
-    border-color: var(--maracuya);
+/* Acceso secundario a WhatsApp: discreto, por debajo del CTA del hero */
+.nav__wa {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 13px 27px;
+    border-radius: 9999px;
+    background: var(--cream);
+    color: var(--green);
+    font-family: var(--font-ui);
+    font-weight: 600;
+    font-size: clamp(13px, 1vw, 15px);
+    line-height: 1;
+    white-space: nowrap;
+    transition: background-color 0.3s var(--ease), color 0.3s var(--ease);
 }
+
+.nav__wa:hover { background: #fff; color: var(--green-deep); }
 
 .nav__burger {
     display: none;
@@ -262,7 +299,7 @@ ul  { list-style: none; }
 .nav__burger[aria-expanded="true"] span:last-child  { transform: translateY(-4.5px) rotate(-45deg); }
 
 /* --------------------------------------------------------------------------
-   5. Hero
+   5. Hero — una sola idea: titular y CTA
    -------------------------------------------------------------------------- */
 .hero {
     position: relative;
@@ -277,52 +314,81 @@ ul  { list-style: none; }
     inset: 0;
     width: 100%; height: 100%;
     object-fit: cover;
+    object-position: center;
 }
 
+/* Oscurecido localizado: más denso a la izquierda y abajo, donde va el
+   titular; el centro y la derecha de la fotografía quedan visibles. */
 .hero__scrim {
     position: absolute;
     inset: 0;
-    background: linear-gradient(to top,
-        rgba(10, 20, 10, 0.86) 0%,
-        rgba(10, 20, 10, 0.42) 46%,
-        rgba(10, 20, 10, 0.34) 100%);
+    background:
+        /* Franja superior: sin ella la navegación blanca cae sobre el
+           cielo claro y queda por debajo del contraste legible. */
+        linear-gradient(180deg,
+            rgba(5, 10, 5, 0.58) 0%,
+            rgba(5, 10, 5, 0.45) 10%,
+            transparent 26%),
+        linear-gradient(90deg,
+            rgba(10, 18, 10, 0.72) 0%,
+            rgba(10, 18, 10, 0.35) 43%,
+            rgba(10, 18, 10, 0.05) 72%),
+        linear-gradient(0deg,
+            rgba(5, 10, 5, 0.48) 0%,
+            transparent 50%);
 }
 
 .hero__content {
     position: relative;
     z-index: 2;
-    padding: calc(var(--header-h) + 3rem) var(--pad-x) 8vh;
+    padding: 0 var(--pad-x) 8vh;
     color: #fff;
-    max-width: 1180px;
-}
-
-.hero__eyebrow {
-    font-size: 12px;
-    font-weight: 600;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: rgba(255, 255, 255, 0.88);
-    margin-bottom: 1.5rem;
 }
 
 .hero__title {
-    font-size: clamp(2.5rem, 6.4vw, 6rem);
-    line-height: 1.02;
-    text-wrap: balance;
-    margin-bottom: 1.8rem;
-    text-shadow: 0 4px 30px rgba(0, 0, 0, 0.35);
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: clamp(68px, 7.2vw, 116px);
+    line-height: 0.86;
+    letter-spacing: -0.025em;
+    text-shadow: 0 4px 34px rgba(0, 0, 0, 0.4);
+    margin-bottom: clamp(28px, 2.6vw, 36px);
+    /* En em, no en px: "No podemos bajar el calor." mide 10.1em en esta
+       fuente, así que el límite acompaña al tamaño y la frase entra en una
+       línea a cualquier resolución. Cuando ya no cabe, parte de forma
+       natural sin separar nunca "El jugo sí.". */
+    max-width: 10.4em;
 }
 
-.hero__title-accent { color: var(--maracuya); }
-
-.hero__subtitle {
-    font-size: clamp(1rem, 1.5vw, 1.2rem);
-    color: rgba(255, 255, 255, 0.94);
-    margin-bottom: 2.4rem;
-    max-width: 46ch;
+/* "El jugo sí." nunca se parte */
+.hero__title-accent {
+    color: var(--maracuya);
+    white-space: nowrap;
 }
 
-.hero__actions { display: flex; gap: 14px; flex-wrap: wrap; }
+.hero__cta {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: clamp(290px, 26vw, 360px);
+    min-height: 54px;
+    padding: 15px 28px;
+    border-radius: 9999px;
+    background: var(--maracuya);
+    color: var(--ink);
+    font-family: var(--font-ui);
+    font-weight: 600;
+    font-size: clamp(13px, 1vw, 15px);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    line-height: 1;
+    transition: background-color 0.3s var(--ease), transform 0.3s var(--ease);
+}
+
+.hero__cta:hover {
+    background: #F7D164;
+    transform: translateY(-1px);
+}
 
 /* --------------------------------------------------------------------------
    6. Franja animada
@@ -1003,11 +1069,13 @@ ul  { list-style: none; }
 /* --------------------------------------------------------------------------
    15. WhatsApp flotante
    -------------------------------------------------------------------------- */
-.whatsapp-fab {
+/* Oculto mientras el hero está en pantalla, para no duplicar el acceso
+   a WhatsApp que ya vive en el header. Aparece al dejar atrás el hero. */
+.whatsapp-floating {
     position: fixed;
     bottom: 20px; right: 20px;
     z-index: 90;
-    width: 60px; height: 60px;
+    width: 58px; height: 58px;
     border-radius: 50%;
     background: var(--whatsapp);
     color: #fff;
@@ -1015,11 +1083,25 @@ ul  { list-style: none; }
     align-items: center;
     justify-content: center;
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.24);
-    transition: transform 0.35s var(--ease), box-shadow 0.35s var(--ease);
+    opacity: 0;
+    visibility: hidden;
+    transform: scale(0.9);
+    pointer-events: none;
+    transition: opacity 250ms ease,
+                transform 250ms ease,
+                visibility 250ms ease,
+                box-shadow 250ms ease;
 }
 
-.whatsapp-fab:hover {
-    transform: translateY(-4px) scale(1.05);
+.whatsapp-floating.is-visible {
+    opacity: 1;
+    visibility: visible;
+    transform: scale(1);
+    pointer-events: auto;
+}
+
+.whatsapp-floating.is-visible:hover {
+    transform: scale(1.05) translateY(-4px);
     box-shadow: 0 14px 32px rgba(0, 0, 0, 0.3);
 }
 
@@ -1039,8 +1121,10 @@ ul  { list-style: none; }
     html { scroll-behavior: auto; }
     .reveal { opacity: 1; transform: none; transition: none; }
     .marquee__track { animation: none; }
-    .btn, .pick__card, .whatsapp-fab { transition: none; }
-    .btn:hover, .pick__card:hover, .whatsapp-fab:hover { transform: none; }
+    .btn, .pick__card { transition: none; }
+    .btn:hover, .pick__card:hover { transform: none; }
+    .whatsapp-floating { transition: opacity 250ms ease, visibility 250ms ease; }
+    .whatsapp-floating.is-visible:hover { transform: scale(1); }
     .product-card, .product-card__visual img, .product-card__name { transition: none; }
     .product-card:hover { transform: none; }
     .product-card:hover .product-card__visual img { transform: none; }
@@ -1082,9 +1166,19 @@ ul  { list-style: none; }
 }
 
 @media (max-width: 960px) {
+    /* Solo logo y hamburguesa: la navegación pasa al panel desplegable */
+    .nav { grid-template-columns: 1fr auto; }
+
+    /* Anclado al alto real del header, que cambia con el scroll */
     .nav__menu {
-        position: fixed;
-        inset: var(--header-h) 0 auto 0;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        /* Sin esto hereda el centrado de la rejilla del header y el panel
+           se encoge al ancho de su contenido en vez de ocupar la pantalla. */
+        justify-self: stretch;
+        width: 100%;
         flex-direction: column;
         align-items: stretch;
         gap: 0;
@@ -1093,6 +1187,7 @@ ul  { list-style: none; }
         padding: 0.8rem var(--pad-x) 1.8rem;
         transform: translateY(-135%);
         transition: transform 0.45s var(--ease);
+        z-index: -1;
     }
 
     .nav__menu.is-open { transform: translateY(0); }
@@ -1108,7 +1203,19 @@ ul  { list-style: none; }
 
     .nav__menu-cta { display: block; margin-top: 1rem; }
 
-    .nav__cta   { display: none; }   /* el CTA vive dentro del menú en móvil */
+    /* Dentro del panel crema el botón se invierte para seguir leyéndose */
+    .nav__wa--block {
+        display: flex;
+        width: 100%;
+        background: var(--green);
+        color: #fff;
+    }
+
+    .nav__wa--block:hover { background: var(--green-deep); color: #fff; }
+
+    /* En el header no cabe un botón ancho: vive dentro del menú */
+    .nav__action .nav__wa { display: none; }
+
     .nav__burger { display: flex; }
 
     .about { grid-template-columns: 1fr; }
@@ -1120,10 +1227,19 @@ ul  { list-style: none; }
 @media (max-width: 760px) {
     :root { --pad-x: 6vw; }
 
-    .hero { min-height: 92svh; }
-    .hero__content { padding-bottom: 6vh; }
-    .hero__actions { width: 100%; }
-    .hero__actions .btn { width: 100%; }
+    :root { --header-h: 64px; }
+
+    .hero { min-height: 100svh; }
+
+    .hero__content {
+        margin-left: 0;
+        padding: 0 20px 52px;
+        max-width: none;
+    }
+
+    .hero__title { font-size: clamp(48px, 13.5vw, 70px); line-height: 0.9; }
+
+    .hero__cta { width: min(100%, 320px); min-height: 52px; }
 
     /* ---- Productos en móvil: una columna ---- */
     .products { padding: 5rem clamp(16px, 5vw, 20px); }
@@ -1181,10 +1297,9 @@ ul  { list-style: none; }
     .footer__sign { white-space: normal; font-size: 2rem; text-align: left; }
     .footer__bottom { flex-direction: column; align-items: flex-start; gap: 0.5rem; }
 
-    .whatsapp-fab { width: 56px; height: 56px; }
+    .whatsapp-floating { width: 54px; height: 54px; bottom: 18px; right: 18px; }
 }
 
 @media (max-width: 460px) {
     .about__body { padding: 3.5rem 1.5rem; }
-    .hero__title { font-size: clamp(2.1rem, 9vw, 3rem); }
 }
