@@ -92,6 +92,31 @@
     }
 
     /* ---------------------------------------------------------------
+       WhatsApp flotante: oculto mientras el hero está en pantalla,
+       para no duplicar el acceso que ya ofrece el header.
+       --------------------------------------------------------------- */
+    var floatingWhatsApp = document.getElementById('whatsappFloating');
+    var hero = document.querySelector('.hero');
+
+    if (floatingWhatsApp && hero) {
+        if ('IntersectionObserver' in window) {
+            var heroObserver = new IntersectionObserver(function (entries) {
+                floatingWhatsApp.classList.toggle('is-visible', !entries[0].isIntersecting);
+            }, { threshold: 0.15 });
+
+            heroObserver.observe(hero);
+        } else {
+            /* Sin observer, se muestra pasado el alto del hero */
+            var toggleFloating = function () {
+                floatingWhatsApp.classList.toggle('is-visible',
+                    window.scrollY > hero.offsetHeight * 0.85);
+            };
+            window.addEventListener('scroll', toggleFloating, { passive: true });
+            toggleFloating();
+        }
+    }
+
+    /* ---------------------------------------------------------------
        Mapas: se insertan solo al acercarse a la pantalla.
        Evita cargar dos iframes de Google Maps en redes móviles.
        --------------------------------------------------------------- */
