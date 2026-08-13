@@ -1,21 +1,29 @@
 /* ==========================================================================
    TERRAFRUT — Todo puro. Cero macanas.
-   Sistema editorial tropical: display monoespaciada con personalidad +
-   sans legible para lectura, color dominante por sección.
+   Dos voces tipográficas y ninguna más: Instrument Serif para los
+   titulares y las frases de campaña, Courier Prime para todo lo que se
+   lee, se toca o informa. Un color dominante por sección.
    ========================================================================== */
 
 /* --------------------------------------------------------------------------
    1. Variables y base
    -------------------------------------------------------------------------- */
 :root {
-    /* Tipografía general del sitio */
-    --display:      'Xanh Mono', 'Courier New', ui-monospace, monospace;
-    --sans:         'Inter', 'Helvetica Neue', Arial, sans-serif;
+    /* Dos voces, ninguna más.
+       Instrument Serif: titulares y frases de campaña.
+       Courier Prime: todo lo demás — navegación, copia, datos y botones. */
+    --font-display:    'Instrument Serif', Georgia, serif;
+    --font-typewriter: 'Courier Prime', 'Courier New', monospace;
 
-    /* Tipografía de la sección de productos */
-    --font-display: 'Cormorant Garamond', Georgia, serif;
-    --font-mono:    'Xanh Mono', 'Courier New', monospace;
-    --font-ui:      'Manrope', Arial, sans-serif;
+    /* Escala editorial: el tamaño responde a la importancia de cada
+       sección, no a la etiqueta HTML que le toque. */
+    --display-xxl: clamp(72px, 9vw, 150px);
+    --display-xl:  clamp(64px, 8vw, 130px);
+    --display-lg:  clamp(52px, 6vw, 100px);
+    --display-md:  clamp(36px, 4vw, 62px);
+    --copy-lg:     clamp(16px, 1.3vw, 20px);
+    --copy-md:     clamp(14px, 1vw, 17px);
+    --copy-sm:     clamp(11px, 0.8vw, 14px);
 
     /* Base */
     --ink:          #14140F;
@@ -48,7 +56,7 @@ html {
 }
 
 body {
-    font-family: var(--sans);
+    font-family: var(--font-typewriter);
     font-size: 16px;
     line-height: 1.6;
     color: var(--ink);
@@ -82,16 +90,26 @@ ul  { list-style: none; }
 
 .skip-link:focus { left: 8px; top: 8px; }
 
-/* Titulares y frases de campaña → display. Lectura → sans. */
-.display,
+/* La voz expresiva: titulares y frases de campaña.
+   Instrument Serif solo trae regular, así que nunca se le pide negrita
+   ni se sintetiza una falsa. */
+.font-display,
 .hero__title, .section-title, .about__title, .proof__title,
 .campaign__title, .stores__title, .pick__title, .closing__title,
-.map__name, .footer__logo, .footer__sign, .nav__logo {
-    font-family: var(--display);
+.products__title, .product-card__nickname, .product-card__name,
+.pick__name, .footer__sign {
+    font-family: var(--font-display);
     font-weight: 400;
-    letter-spacing: -0.01em;
-    /* Xanh Mono solo trae peso regular: el navegador sintetiza la negrita. */
-    font-synthesis: weight style;
+    font-synthesis: none;
+    letter-spacing: -0.035em;
+    line-height: 0.88;
+}
+
+/* La voz funcional: todo lo que se lee, se toca o informa. */
+.font-typewriter {
+    font-family: var(--font-typewriter);
+    font-weight: 400;
+    line-height: 1.45;
 }
 
 /* --------------------------------------------------------------------------
@@ -106,10 +124,10 @@ ul  { list-style: none; }
     border-radius: 9999px;
     border: 1.5px solid transparent;
     background: transparent;
-    font-family: var(--sans);
+    font-family: var(--font-typewriter);
     font-size: 15px;
-    font-weight: 600;
-    letter-spacing: 0.01em;
+    font-weight: 400;
+    letter-spacing: 0;
     line-height: 1.3;
     text-align: center;
     cursor: pointer;
@@ -145,10 +163,10 @@ ul  { list-style: none; }
    3. Piezas compartidas
    -------------------------------------------------------------------------- */
 .eyebrow {
-    font-family: var(--sans);
-    font-size: 12px;
-    font-weight: 600;
-    letter-spacing: 0.16em;
+    font-family: var(--font-typewriter);
+    font-size: var(--copy-sm);
+    font-weight: 700;
+    letter-spacing: 0.04em;
     text-transform: uppercase;
     color: var(--gray);
 }
@@ -156,8 +174,8 @@ ul  { list-style: none; }
 .eyebrow--light { color: rgba(255, 255, 255, 0.72); }
 
 .section-title {
-    font-size: clamp(2.4rem, 5vw, 4rem);
-    line-height: 1.06;
+    font-size: var(--display-lg);
+    line-height: 0.86;
 }
 
 /* --------------------------------------------------------------------------
@@ -199,11 +217,15 @@ ul  { list-style: none; }
     gap: 1.5rem;
 }
 
-/* El logo es la palabra Terrafrut: se agranda, no se rediseña */
+/* El logo es la palabra Terrafrut, no un archivo de imagen. Se mantiene
+   monoespaciada como estaba, ahora en Courier Prime para no arrastrar una
+   tercera familia solo por él. */
 .nav__logo {
     justify-self: start;
-    font-size: clamp(20px, 2vw, 32px);
+    font-family: var(--font-typewriter);
+    font-size: clamp(20px, 2vw, 30px);
     font-weight: 700;
+    letter-spacing: -0.02em;
     line-height: 1.1;
     color: var(--nav-ink);
     transition: color 0.4s var(--ease), font-size 0.4s var(--ease);
@@ -221,9 +243,10 @@ ul  { list-style: none; }
 .nav__menu-cta { display: none; }
 
 .nav__link {
-    font-family: var(--font-ui);
-    font-size: clamp(14px, 1.05vw, 16px);
-    font-weight: 500;
+    font-family: var(--font-typewriter);
+    font-size: clamp(13px, 1vw, 16px);
+    font-weight: 400;
+    letter-spacing: -0.015em;
     color: var(--nav-ink);
     padding: 6px 2px;
     position: relative;
@@ -266,9 +289,9 @@ ul  { list-style: none; }
     border-radius: 9999px;
     background: var(--cream);
     color: var(--green);
-    font-family: var(--font-ui);
-    font-weight: 600;
-    font-size: clamp(13px, 1vw, 15px);
+    font-family: var(--font-typewriter);
+    font-weight: 400;
+    font-size: 14px;
     line-height: 1;
     white-space: nowrap;
     transition: background-color 0.3s var(--ease), color 0.3s var(--ease);
@@ -347,17 +370,16 @@ ul  { list-style: none; }
 
 .hero__title {
     font-family: var(--font-display);
-    font-weight: 500;
-    font-size: clamp(68px, 7.2vw, 116px);
-    line-height: 0.86;
-    letter-spacing: -0.025em;
-    text-shadow: 0 4px 34px rgba(0, 0, 0, 0.4);
-    margin-bottom: clamp(28px, 2.6vw, 36px);
-    /* En em, no en px: "No podemos bajar el calor." mide 10.1em en esta
-       fuente, así que el límite acompaña al tamaño y la frase entra en una
-       línea a cualquier resolución. Cuando ya no cabe, parte de forma
-       natural sin separar nunca "El jugo sí.". */
-    max-width: 10.4em;
+    font-weight: 400;
+    font-size: clamp(68px, 8vw, 132px);
+    line-height: 0.84;
+    letter-spacing: -0.04em;
+    margin-bottom: clamp(32px, 3vw, 48px);
+    /* En em, no en px: "No podemos bajar el calor." mide 7.86em en
+       Instrument Serif, así que el límite acompaña al tamaño y la frase
+       entra en una línea a cualquier resolución. Cuando ya no cabe, parte
+       de forma natural sin separar nunca "El jugo sí.". */
+    max-width: 8.1em;
 }
 
 /* "El jugo sí." nunca se parte */
@@ -376,10 +398,10 @@ ul  { list-style: none; }
     border-radius: 9999px;
     background: var(--maracuya);
     color: var(--ink);
-    font-family: var(--font-ui);
-    font-weight: 600;
-    font-size: clamp(13px, 1vw, 15px);
-    letter-spacing: 0.08em;
+    font-family: var(--font-typewriter);
+    font-weight: 400;
+    font-size: 14px;
+    letter-spacing: 0;
     text-transform: uppercase;
     line-height: 1;
     transition: background-color 0.3s var(--ease), transform 0.3s var(--ease);
@@ -412,9 +434,9 @@ ul  { list-style: none; }
     display: flex;
     align-items: center;
     flex-shrink: 0;
-    font-family: var(--display);
-    font-size: clamp(0.95rem, 1.7vw, 1.4rem);
-    font-weight: 700;
+    font-family: var(--font-typewriter);
+    font-size: clamp(13px, 1.1vw, 17px);
+    font-weight: 400;
     text-transform: uppercase;
     letter-spacing: 0.04em;
     white-space: nowrap;
@@ -455,22 +477,24 @@ ul  { list-style: none; }
 .about__body .eyebrow { margin-bottom: 1.6rem; }
 
 .about__title {
-    font-size: clamp(2rem, 3.4vw, 3.2rem);
-    line-height: 1.1;
-    margin-bottom: 1.8rem;
+    font-size: clamp(60px, 7vw, 112px);
+    line-height: 0.86;
+    letter-spacing: -0.04em;
+    margin-bottom: clamp(32px, 3vw, 48px);
     text-wrap: balance;
 }
 
 .about__title em { font-style: normal; color: var(--green); }
 
 .about__text {
+    font-size: clamp(15px, 1.25vw, 19px);
     color: #3B3B33;
-    line-height: 1.75;
-    max-width: 48ch;
+    line-height: 1.5;
+    max-width: 44ch;
     margin-bottom: 3rem;
 }
 
-.about__text p + p { margin-top: 1rem; }
+.about__text p + p { margin-top: 22px; }
 
 .about__blocks {
     display: grid;
@@ -479,23 +503,24 @@ ul  { list-style: none; }
 }
 
 .block {
-    padding: 1.5rem 0;
-    border-top: 1.5px solid var(--line);
+    padding: 1.4rem 0;
+    border-top: 1px solid rgba(20, 20, 15, 0.09);
 }
 
-.block:last-child { border-bottom: 1.5px solid var(--line); }
+.block:last-child { border-bottom: 1px solid rgba(20, 20, 15, 0.09); }
 
 .block__title {
-    font-family: var(--sans);
-    font-size: 13px;
+    font-family: var(--font-typewriter);
+    font-size: 14px;
     font-weight: 700;
-    letter-spacing: 0.12em;
+    line-height: 1.2;
+    letter-spacing: 0.04em;
     text-transform: uppercase;
     color: var(--green);
-    margin-bottom: 0.35rem;
+    margin-bottom: 0.45rem;
 }
 
-.block__text { font-size: 15px; color: var(--gray); line-height: 1.6; }
+.block__text { font-size: var(--copy-md); color: var(--gray); line-height: 1.4; }
 
 /* --------------------------------------------------------------------------
    8. Productos — grilla editorial de catálogo
@@ -515,29 +540,27 @@ ul  { list-style: none; }
 .products__header { margin-bottom: clamp(3rem, 5vw, 5rem); }
 
 .products__eyebrow {
-    font-family: var(--font-ui);
-    font-weight: 600;
-    font-size: 13px;
-    letter-spacing: 0.12em;
+    font-family: var(--font-typewriter);
+    font-weight: 700;
+    font-size: var(--copy-sm);
+    letter-spacing: 0.04em;
     text-transform: uppercase;
     color: var(--gray);
     margin-bottom: 1.2rem;
 }
 
 .products__title {
-    font-family: var(--font-display);
-    font-weight: 500;
-    font-size: clamp(58px, 7vw, 100px);
-    line-height: 0.9;
-    letter-spacing: -0.02em;
+    font-size: clamp(64px, 8vw, 128px);
+    line-height: 0.84;
+    letter-spacing: -0.04em;
     color: var(--ink);
-    margin-bottom: 1.2rem;
+    margin-bottom: clamp(24px, 2vw, 32px);
 }
 
 .products__intro {
-    font-family: var(--font-mono);
+    font-family: var(--font-typewriter);
     font-weight: 400;
-    font-size: clamp(18px, 1.6vw, 21px);
+    font-size: clamp(15px, 1.2vw, 18px);
     line-height: 1.4;
     color: var(--gray);
     max-width: 42ch;
@@ -608,10 +631,10 @@ ul  { list-style: none; }
 
 .product-card__usage {
     left: clamp(18px, 1.5vw, 24px);
-    font-family: var(--font-ui);
-    font-weight: 600;
-    font-size: clamp(10px, 0.75vw, 12px);
-    letter-spacing: 0.05em;
+    font-family: var(--font-typewriter);
+    font-weight: 400;
+    font-size: 11px;
+    letter-spacing: 0.02em;
     text-transform: uppercase;
     padding: 7px 13px;
     border: 1px solid rgba(20, 20, 15, 0.22);
@@ -621,7 +644,7 @@ ul  { list-style: none; }
 
 .product-card__price {
     right: clamp(18px, 1.5vw, 24px);
-    font-family: var(--font-mono);
+    font-family: var(--font-typewriter);
     font-weight: 400;
     font-size: clamp(14px, 1.05vw, 17px);
     line-height: 1;
@@ -642,28 +665,27 @@ ul  { list-style: none; }
 }
 
 .product-card__character {
-    font-family: var(--font-display);
-    font-weight: 600;
-    font-size: clamp(13px, 1vw, 15px);
-    letter-spacing: 0.06em;
+    font-family: var(--font-typewriter);
+    font-weight: 700;
+    font-size: clamp(11px, 0.85vw, 14px);
+    letter-spacing: 0.02em;
     text-transform: uppercase;
     color: var(--green);
     text-align: left;
 }
 
 .product-card__nickname {
-    font-family: var(--font-display);
-    font-weight: 500;
-    font-size: clamp(22px, 2vw, 30px);
-    line-height: 1;
-    letter-spacing: -0.02em;
+    font-size: clamp(34px, 3.1vw, 54px);
+    line-height: 0.9;
+    letter-spacing: -0.03em;
     color: var(--ink);
     text-align: center;
 }
 
 .product-card__size {
-    font-family: var(--font-mono);
-    font-size: clamp(12px, 0.95vw, 14px);
+    font-family: var(--font-typewriter);
+    font-weight: 400;
+    font-size: clamp(11px, 0.85vw, 14px);
     text-transform: uppercase;
     color: var(--gray);
     white-space: nowrap;
@@ -672,11 +694,9 @@ ul  { list-style: none; }
 
 /* El nombre real es el gran elemento centrado de la tarjeta */
 .product-card__name {
-    font-family: var(--font-display);
-    font-weight: 500;
-    font-size: clamp(34px, 3.5vw, 56px);
+    font-size: clamp(32px, 2.8vw, 48px);
     line-height: 0.95;
-    letter-spacing: -0.02em;
+    letter-spacing: -0.025em;
     color: var(--ink);
     text-align: center;
     margin-inline: auto;
@@ -690,16 +710,16 @@ ul  { list-style: none; }
 .product-card:hover .product-card__name { color: var(--green); }
 
 .product-card__description {
-    font-family: var(--font-mono);
-    font-size: clamp(15px, 1.15vw, 17px);
-    line-height: 1.45;
+    font-family: var(--font-typewriter);
+    font-size: clamp(13px, 1vw, 16px);
+    line-height: 1.4;
     color: var(--gray);
     text-align: center;
 }
 
 /* Desglose de precios: información secundaria, nunca una llamada a la acción */
 .product-card__price-detail {
-    font-family: var(--font-mono);
+    font-family: var(--font-typewriter);
     font-size: clamp(13px, 0.95vw, 15px);
     line-height: 1.4;
     color: var(--gray-light);
@@ -721,14 +741,20 @@ ul  { list-style: none; }
 .proof__head .eyebrow { margin-bottom: 1.4rem; }
 
 .proof__title {
-    font-size: clamp(2.2rem, 4.6vw, 3.8rem);
-    line-height: 1.05;
-    margin-bottom: 1.2rem;
+    font-size: clamp(68px, 8vw, 130px);
+    line-height: 0.84;
+    letter-spacing: -0.04em;
+    margin-bottom: clamp(24px, 2vw, 32px);
 }
 
 .proof__title em { font-style: normal; color: var(--maracuya); }
 
-.proof__intro { font-size: 1.05rem; color: rgba(255, 255, 255, 0.82); }
+.proof__intro {
+    font-family: var(--font-typewriter);
+    font-size: var(--copy-lg);
+    line-height: 1.45;
+    color: rgba(255, 255, 255, 0.82);
+}
 
 .proof__grid {
     display: grid;
@@ -744,16 +770,23 @@ ul  { list-style: none; }
 }
 
 .fact__title {
-    font-family: var(--sans);
-    font-size: 13px;
+    font-family: var(--font-typewriter);
+    font-size: 14px;
     font-weight: 700;
-    letter-spacing: 0.12em;
+    line-height: 1.2;
+    letter-spacing: 0.04em;
     text-transform: uppercase;
     color: var(--maracuya);
     margin-bottom: 0.6rem;
 }
 
-.fact__text { font-size: 15px; color: rgba(255, 255, 255, 0.85); line-height: 1.6; }
+.fact__text {
+    font-family: var(--font-typewriter);
+    font-size: var(--copy-md);
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.85);
+    line-height: 1.4;
+}
 
 /* --------------------------------------------------------------------------
    10. Editorial de campaña
@@ -791,19 +824,22 @@ ul  { list-style: none; }
 }
 
 .campaign__title {
-    font-size: clamp(2.1rem, 4.6vw, 4rem);
-    line-height: 1.06;
-    margin-bottom: 1.4rem;
+    font-size: var(--display-lg);
+    line-height: 0.86;
+    letter-spacing: -0.04em;
+    margin-bottom: clamp(28px, 2.4vw, 40px);
     text-wrap: balance;
 }
 
 .campaign__title em { font-style: normal; color: var(--maracuya); }
 
 .campaign__text {
-    font-size: 1.1rem;
+    font-family: var(--font-typewriter);
+    font-size: var(--copy-lg);
+    line-height: 1.45;
     color: rgba(255, 255, 255, 0.9);
     margin-bottom: 2.2rem;
-    max-width: 44ch;
+    max-width: 42ch;
 }
 
 /* --------------------------------------------------------------------------
@@ -822,15 +858,17 @@ ul  { list-style: none; }
 .stores__intro .eyebrow { margin-bottom: 1.4rem; }
 
 .stores__title {
-    font-size: clamp(2.2rem, 5vw, 4.2rem);
-    line-height: 1.05;
+    font-size: var(--display-lg);
+    line-height: 0.86;
+    letter-spacing: -0.04em;
 }
 
 .stores__note {
-    font-size: 1rem;
+    font-family: var(--font-typewriter);
+    font-size: var(--copy-md);
     color: rgba(255, 255, 255, 0.78);
-    max-width: 34ch;
-    line-height: 1.65;
+    max-width: 40ch;
+    line-height: 1.45;
     padding-bottom: 0.5rem;
 }
 
@@ -882,21 +920,28 @@ ul  { list-style: none; }
 .map__info .btn { pointer-events: auto; }   /* …excepto sobre el botón */
 
 .map__name {
-    font-size: clamp(1.9rem, 3vw, 2.8rem);
-    line-height: 1.08;
+    font-family: var(--font-typewriter);
+    font-weight: 700;
+    font-size: clamp(20px, 1.8vw, 28px);
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    line-height: 1.15;
     text-shadow: 0 4px 16px rgba(0, 0, 0, 0.55);
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.6rem;
 }
 
 .map__address {
-    font-size: 15px;
+    font-family: var(--font-typewriter);
+    font-size: var(--copy-md);
+    line-height: 1.45;
     color: rgba(255, 255, 255, 0.92);
     text-shadow: 0 2px 10px rgba(0, 0, 0, 0.7);
-    margin-bottom: 0.2rem;
+    margin-bottom: 0.25rem;
 }
 
 .map__hours {
-    font-size: 14px;
+    font-family: var(--font-typewriter);
+    font-size: var(--copy-sm);
     color: rgba(255, 255, 255, 0.75);
     text-shadow: 0 2px 10px rgba(0, 0, 0, 0.7);
     margin-bottom: 1.4rem;
@@ -914,13 +959,20 @@ ul  { list-style: none; }
 .pick .eyebrow { margin-bottom: 1.2rem; }
 
 .pick__title {
-    font-size: clamp(2rem, 4.4vw, 3.4rem);
-    line-height: 1.08;
-    margin-bottom: 0.8rem;
+    font-size: var(--display-md);
+    line-height: 0.9;
+    letter-spacing: -0.035em;
+    margin-bottom: clamp(16px, 1.4vw, 22px);
     text-wrap: balance;
 }
 
-.pick__note { color: var(--gray); margin-bottom: 3rem; }
+.pick__note {
+    font-family: var(--font-typewriter);
+    font-size: var(--copy-md);
+    line-height: 1.45;
+    color: var(--gray);
+    margin-bottom: 3rem;
+}
 
 .pick__grid {
     display: grid;
@@ -953,16 +1005,16 @@ ul  { list-style: none; }
 .pick__card--copoazu  { background: var(--naranja);    color: #fff; }
 
 .pick__name {
-    font-family: var(--display);
-    font-size: clamp(1.6rem, 2.6vw, 2.2rem);
-    font-weight: 700;
-    line-height: 1.1;
+    font-size: clamp(30px, 2.6vw, 42px);
+    line-height: 1;
+    letter-spacing: -0.03em;
 }
 
 .pick__hint {
-    font-size: 13px;
-    font-weight: 600;
-    letter-spacing: 0.1em;
+    font-family: var(--font-typewriter);
+    font-size: var(--copy-sm);
+    font-weight: 400;
+    letter-spacing: 0.02em;
     text-transform: uppercase;
     opacity: 0.8;
 }
@@ -980,14 +1032,20 @@ ul  { list-style: none; }
 .closing .eyebrow { color: rgba(20, 20, 15, 0.6); margin-bottom: 1.6rem; }
 
 .closing__title {
-    font-size: clamp(2.6rem, 7vw, 5.5rem);
-    line-height: 1.02;
-    margin-bottom: 1.2rem;
+    font-size: clamp(72px, 9vw, 150px);
+    line-height: 0.82;
+    letter-spacing: -0.045em;
+    margin-bottom: clamp(24px, 2vw, 32px);
 }
 
 .closing__title em { font-style: normal; color: var(--green); }
 
-.closing__text { font-size: 1.15rem; margin-bottom: 2.4rem; }
+.closing__text {
+    font-family: var(--font-typewriter);
+    font-size: var(--copy-lg);
+    line-height: 1.45;
+    margin-bottom: clamp(32px, 3vw, 44px);
+}
 
 .closing__actions {
     display: flex;
@@ -1008,30 +1066,38 @@ ul  { list-style: none; }
     padding: 0 var(--pad-x) 3.5rem;
 }
 
-.footer__logo { font-size: 1.9rem; font-weight: 700; line-height: 1.1; }
+.footer__logo {
+    font-family: var(--font-typewriter);
+    font-size: clamp(22px, 1.9vw, 30px);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+}
 
 .footer__place {
-    font-size: 12px;
-    font-weight: 600;
-    letter-spacing: 0.16em;
+    font-family: var(--font-typewriter);
+    font-size: var(--copy-sm);
+    font-weight: 400;
+    letter-spacing: 0.04em;
     text-transform: uppercase;
     color: rgba(255, 255, 255, 0.6);
     margin-top: 0.5rem;
 }
 
 .footer__heading {
-    font-family: var(--sans);
-    font-size: 11px;
+    font-family: var(--font-typewriter);
+    font-size: 12px;
     font-weight: 700;
-    letter-spacing: 0.16em;
+    letter-spacing: 0.04em;
     text-transform: uppercase;
     color: rgba(255, 255, 255, 0.5);
     margin-bottom: 1.2rem;
 }
 
 .footer__col li {
-    font-size: 15px;
-    line-height: 2.2;
+    font-family: var(--font-typewriter);
+    font-size: var(--copy-md);
+    line-height: 2.1;
     color: rgba(255, 255, 255, 0.9);
 }
 
@@ -1041,11 +1107,10 @@ ul  { list-style: none; }
 .footer__muted { color: rgba(255, 255, 255, 0.55) !important; }
 
 .footer__sign {
-    font-family: var(--display);
-    font-weight: 700;
-    font-size: clamp(1.8rem, 6.5vw, 5rem);
-    line-height: 1;
-    letter-spacing: -0.02em;
+    font-weight: 400;
+    font-size: clamp(32px, 7vw, 110px);
+    line-height: 0.9;
+    letter-spacing: -0.04em;
     text-align: center;
     color: var(--maracuya);
     padding: 0 var(--pad-x) 3rem;
@@ -1194,9 +1259,10 @@ ul  { list-style: none; }
 
     .nav__menu .nav__link {
         display: block;
-        font-family: var(--display);
-        font-size: 1.35rem;
-        font-weight: 700;
+        font-family: var(--font-typewriter);
+        font-size: 20px;
+        font-weight: 400;
+        letter-spacing: -0.015em;
         padding: 0.85rem 0;
         color: var(--ink);          /* el panel siempre es claro */
     }
@@ -1237,7 +1303,7 @@ ul  { list-style: none; }
         max-width: none;
     }
 
-    .hero__title { font-size: clamp(48px, 13.5vw, 70px); line-height: 0.9; }
+    .hero__title { font-size: clamp(48px, 13.5vw, 76px); line-height: 0.88; }
 
     .hero__cta { width: min(100%, 320px); min-height: 52px; }
 
@@ -1246,7 +1312,7 @@ ul  { list-style: none; }
 
     .products__eyebrow { font-size: 11px; }
 
-    .products__title { font-size: clamp(42px, 13vw, 64px); }
+    .products__title { font-size: clamp(48px, 13vw, 72px); line-height: 0.86; }
 
     .products__intro { font-size: clamp(15px, 4vw, 17px); }
 
@@ -1255,15 +1321,15 @@ ul  { list-style: none; }
     .product-grid > li:nth-child(5) { grid-column: auto; width: 100%; }
 
     /* El apodo ocupa su propia línea centrada y puede partirse sin encogerse */
-    .product-card__nickname { font-size: clamp(26px, 7vw, 34px); }
+    .product-card__nickname { font-size: clamp(30px, 8vw, 44px); }
 
-    .product-card__character { font-size: clamp(13px, 3.4vw, 15px); }
-    .product-card__size      { font-size: clamp(12px, 3.2vw, 14px); }
+    .product-card__character { font-size: 12px; }
+    .product-card__size      { font-size: 12px; }
 
-    .product-card__name { font-size: clamp(30px, 9vw, 42px); }
+    .product-card__name { font-size: clamp(30px, 8.5vw, 42px); }
 
-    .product-card__description   { font-size: clamp(15px, 4vw, 17px); }
-    .product-card__price-detail  { font-size: clamp(13px, 3.5vw, 15px); }
+    .product-card__description   { font-size: clamp(14px, 3.8vw, 16px); }
+    .product-card__price-detail  { font-size: clamp(13px, 3.4vw, 15px); }
 
     .proof { padding: 5rem var(--pad-x); }
     .proof__grid { grid-template-columns: 1fr; gap: 1rem; }
@@ -1294,7 +1360,7 @@ ul  { list-style: none; }
     .closing__actions .btn { width: 100%; }
 
     .footer__grid { grid-template-columns: 1fr; gap: 2.2rem; }
-    .footer__sign { white-space: normal; font-size: 2rem; text-align: left; }
+    .footer__sign { white-space: normal; font-size: clamp(32px, 11vw, 52px); text-align: left; }
     .footer__bottom { flex-direction: column; align-items: flex-start; gap: 0.5rem; }
 
     .whatsapp-floating { width: 54px; height: 54px; bottom: 18px; right: 18px; }
