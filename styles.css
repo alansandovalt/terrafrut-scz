@@ -389,15 +389,16 @@ ul  { list-style: none; }
     white-space: nowrap;
 }
 
-.hero__cta {
+/* Botón sello: cápsula crema con filete oscuro y sombra a cuadros.
+   Compartido por el CTA del hero y el de la sección de campaña. */
+.cta-stamp {
+    --stamp-offset: 5.5px;
+
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: clamp(300px, 27vw, 380px);
     min-height: 58px;
     padding: 17px 30px;
-    /* Cápsula crema con filete oscuro: destaca sobre la vegetación del
-       hero y deja el verde como color de la franja, no del botón. */
     position: relative;
     border-radius: 9999px;
     background: var(--cream);
@@ -409,38 +410,46 @@ ul  { list-style: none; }
     letter-spacing: 0.02em;
     text-transform: uppercase;
     line-height: 1;
-    /* Se usa translate y no transform: la animación de aparición ya ocupa
-       transform en este elemento y lo anularía. */
-    transition: translate 0.16s ease-out;
 }
 
+/* Se usa translate y no transform porque la animación de aparición ya ocupa
+   transform en estos elementos. El selector lleva el tipo de etiqueta para
+   ganarle en especificidad a .reveal, que redefine toda la transición. */
+a.cta-stamp {
+    transition: translate 0.32s var(--ease),
+                opacity 0.85s var(--ease),   /* se conserva la aparición */
+                transform 0.85s var(--ease);
+    transition-delay: 0s, var(--reveal-delay, 0s), var(--reveal-delay, 0s);
+}
+
+.hero__cta { width: clamp(300px, 27vw, 380px); }
+
 /* Sombra decorativa: tablero donde una de cada dos celdas es transparente,
-   así se ve la fotografía del hero por detrás. Los cuadros van en crema y
-   no en negro: sobre la vegetación oscura del hero el negro desaparece.
-   Va detrás del botón porque .hero__content ya crea el contexto de apilado. */
-.hero__cta::after {
+   así se ve la fotografía por detrás. Los cuadros van en crema y no en
+   negro: sobre las fotografías oscuras del sitio el negro desaparece. */
+.cta-stamp::after {
     content: "";
     position: absolute;
     inset: -2px;                       /* cubre también el filete */
     z-index: -1;
     border-radius: inherit;
-    translate: 6px 6px;
+    translate: var(--stamp-offset) var(--stamp-offset);
     background-image:
         linear-gradient(45deg, var(--cream) 25%, transparent 25%, transparent 75%, var(--cream) 75%),
         linear-gradient(45deg, var(--cream) 25%, transparent 25%, transparent 75%, var(--cream) 75%);
-    background-size: 12px 12px;
-    background-position: 0 0, 6px 6px;
-    transition: translate 0.16s ease-out, opacity 0.16s ease-out;
+    background-size: 11px 11px;
+    background-position: 0 0, 5.5px 5.5px;
+    transition: translate 0.32s var(--ease), opacity 0.32s var(--ease);
 }
 
 /* Al pasar el cursor el botón se hunde sobre su propia sombra */
-.hero__cta:hover,
-.hero__cta:active {
-    translate: 6px 6px;
+.cta-stamp:hover,
+.cta-stamp:active {
+    translate: var(--stamp-offset) var(--stamp-offset);
 }
 
-.hero__cta:hover::after,
-.hero__cta:active::after {
+.cta-stamp:hover::after,
+.cta-stamp:active::after {
     translate: 0 0;
     opacity: 0;
 }
@@ -1227,9 +1236,9 @@ ul  { list-style: none; }
     .btn, .pick__card { transition: none; }
     .btn:hover, .pick__card:hover { transform: none; }
     /* El botón sigue reaccionando, pero sin desplazarse */
-    .hero__cta, .hero__cta::after { transition: none; }
-    .hero__cta:hover, .hero__cta:active { translate: none; }
-    .hero__cta:hover::after, .hero__cta:active::after { opacity: 0; }
+    .cta-stamp, .cta-stamp::after { transition: none; }
+    .cta-stamp:hover, .cta-stamp:active { translate: none; }
+    .cta-stamp:hover::after, .cta-stamp:active::after { opacity: 0; }
     .whatsapp-floating { transition: opacity 250ms ease, visibility 250ms ease; }
     .whatsapp-floating.is-visible:hover { transform: scale(1); }
     .product-card, .product-card__visual img, .product-card__name { transition: none; }
@@ -1381,7 +1390,7 @@ ul  { list-style: none; }
         background: linear-gradient(to top,
             rgba(14, 24, 14, 0.9) 0%, rgba(14, 24, 14, 0.62) 60%, rgba(14, 24, 14, 0.45) 100%);
     }
-    .campaign .btn { width: 100%; }
+    .campaign .cta-stamp { width: min(100%, 320px); min-height: 52px; }
 
     .stores__intro {
         flex-direction: column;
