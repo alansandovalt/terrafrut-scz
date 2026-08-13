@@ -398,6 +398,7 @@ ul  { list-style: none; }
     padding: 17px 30px;
     /* Cápsula crema con filete oscuro: destaca sobre la vegetación del
        hero y deja el verde como color de la franja, no del botón. */
+    position: relative;
     border-radius: 9999px;
     background: var(--cream);
     border: 2px solid var(--ink);
@@ -408,13 +409,40 @@ ul  { list-style: none; }
     letter-spacing: 0.02em;
     text-transform: uppercase;
     line-height: 1;
-    transition: background-color 0.3s var(--ease), transform 0.3s var(--ease);
+    /* Se usa translate y no transform: la animación de aparición ya ocupa
+       transform en este elemento y lo anularía. */
+    transition: translate 0.16s ease-out;
 }
 
-.hero__cta:hover {
-    background: var(--ink);
-    color: var(--cream);
-    transform: translateY(-1px);
+/* Sombra decorativa: tablero donde una de cada dos celdas es transparente,
+   así se ve la fotografía del hero por detrás. Los cuadros van en crema y
+   no en negro: sobre la vegetación oscura del hero el negro desaparece.
+   Va detrás del botón porque .hero__content ya crea el contexto de apilado. */
+.hero__cta::after {
+    content: "";
+    position: absolute;
+    inset: -2px;                       /* cubre también el filete */
+    z-index: -1;
+    border-radius: inherit;
+    translate: 6px 6px;
+    background-image:
+        linear-gradient(45deg, var(--cream) 25%, transparent 25%, transparent 75%, var(--cream) 75%),
+        linear-gradient(45deg, var(--cream) 25%, transparent 25%, transparent 75%, var(--cream) 75%);
+    background-size: 12px 12px;
+    background-position: 0 0, 6px 6px;
+    transition: translate 0.16s ease-out, opacity 0.16s ease-out;
+}
+
+/* Al pasar el cursor el botón se hunde sobre su propia sombra */
+.hero__cta:hover,
+.hero__cta:active {
+    translate: 6px 6px;
+}
+
+.hero__cta:hover::after,
+.hero__cta:active::after {
+    translate: 0 0;
+    opacity: 0;
 }
 
 /* --------------------------------------------------------------------------
@@ -1198,6 +1226,10 @@ ul  { list-style: none; }
     .marquee__track { animation: none; }
     .btn, .pick__card { transition: none; }
     .btn:hover, .pick__card:hover { transform: none; }
+    /* El botón sigue reaccionando, pero sin desplazarse */
+    .hero__cta, .hero__cta::after { transition: none; }
+    .hero__cta:hover, .hero__cta:active { translate: none; }
+    .hero__cta:hover::after, .hero__cta:active::after { opacity: 0; }
     .whatsapp-floating { transition: opacity 250ms ease, visibility 250ms ease; }
     .whatsapp-floating.is-visible:hover { transform: scale(1); }
     .product-card, .product-card__visual img, .product-card__name { transition: none; }
