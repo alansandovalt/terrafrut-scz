@@ -396,12 +396,12 @@ ul  { list-style: none; }
     width: clamp(300px, 27vw, 380px);
     min-height: 58px;
     padding: 17px 30px;
+    /* Cápsula crema con filete oscuro: destaca sobre la vegetación del
+       hero y deja el verde como color de la franja, no del botón. */
     border-radius: 9999px;
-    background: var(--green);
-    /* Sobre la vegetación oscura del hero el verde sólo separa 1.95:1 del
-       fondo. El aro claro le devuelve el contorno sin tocar el color. */
-    border: 1.5px solid rgba(255, 255, 255, 0.92);
-    color: #fff;
+    background: var(--cream);
+    border: 2px solid var(--ink);
+    color: var(--ink);
     font-family: var(--font-typewriter);
     font-weight: 400;
     font-size: 15px;
@@ -412,7 +412,8 @@ ul  { list-style: none; }
 }
 
 .hero__cta:hover {
-    background: var(--green-deep);
+    background: var(--ink);
+    color: var(--cream);
     transform: translateY(-1px);
 }
 
