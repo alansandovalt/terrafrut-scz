@@ -397,8 +397,11 @@ ul  { list-style: none; }
     min-height: 58px;
     padding: 17px 30px;
     border-radius: 9999px;
-    background: var(--maracuya);
-    color: var(--ink);
+    background: var(--green);
+    /* Sobre la vegetación oscura del hero el verde sólo separa 1.95:1 del
+       fondo. El aro claro le devuelve el contorno sin tocar el color. */
+    border: 1.5px solid rgba(255, 255, 255, 0.92);
+    color: #fff;
     font-family: var(--font-typewriter);
     font-weight: 400;
     font-size: 15px;
@@ -409,7 +412,7 @@ ul  { list-style: none; }
 }
 
 .hero__cta:hover {
-    background: #F7D164;
+    background: var(--green-deep);
     transform: translateY(-1px);
 }
 
@@ -417,8 +420,9 @@ ul  { list-style: none; }
    6. Franja animada
    -------------------------------------------------------------------------- */
 .marquee {
-    background: var(--maracuya);
-    color: var(--green-deep);
+    background: var(--green);
+    /* Sobre este verde el texto oscuro queda en 2.1:1: va en blanco. */
+    color: #fff;
     overflow: hidden;
     padding: 18px 0;
     border-top: 2px solid var(--ink);
